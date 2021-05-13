@@ -36,11 +36,16 @@ module strut(posX, posY) {
 }
 
 // tented stand with support struts
-module keyboard_stand(body_struts = 2, thumbStruts = 4) {
+module keyboard_stand(body_struts = 2, thumbStruts = 4, show_keyboard_volume = false) {
     difference() {
         rotate([0, -stand_angle, 0]) {
             union() {
                 keyboard_plate(body_struts > 0, thumbStruts > 0);
+
+                if (show_keyboard_volume) {
+                    keyboard_volume();
+                }
+
                 if (body_struts > 0) {
                     for (i = [0:body_struts - 1]) {
                         strut(

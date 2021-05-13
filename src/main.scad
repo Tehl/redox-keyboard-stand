@@ -11,11 +11,12 @@ include <modules/footprint.scad>;
 include <modules/plate.scad>;
 include <modules/stand.scad>;
 include <modules/baseplate.scad>;
+include <modules/keyboard_volume.scad>;
 
 module main() {
     difference() {
         union() {
-            keyboard_stand();
+            keyboard_stand(show_keyboard_volume = false);
             baseplate();
         }
 
