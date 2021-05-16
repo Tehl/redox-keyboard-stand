@@ -9,23 +9,7 @@ include <dimensions/utility.scad>;
 include <modules/hex.scad>;
 include <modules/footprint.scad>;
 include <modules/plate.scad>;
-include <modules/stand.scad>;
-include <modules/baseplate.scad>;
 include <modules/keyboard_volume.scad>;
+include <modules/v1/main.scad>;
 
-module main() {
-    difference() {
-        union() {
-            keyboard_stand(show_keyboard_volume = false);
-            baseplate();
-        }
-
-        // recess the baseplate to add a neoprene layer for grip
-        translate([0, 0, -0.01])
-            linear_extrude(2)
-                offset(r = -4)
-                    baseplate_projection(baseplate_depth);
-    }
-}
-
-main();
+main(show_keyboard_volume = true);
