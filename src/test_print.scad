@@ -1,5 +1,5 @@
-render_fragments = 32;
-baseplate_fragments = 16;
+render_fragments = 16;
+baseplate_fragments = 4;
 
 include <dimensions/redox.scad>;
 include <dimensions/plate.scad>;

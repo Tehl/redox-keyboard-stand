@@ -1,11 +1,26 @@
+baseplate_coords_main = [ 
+    strut_coords[1],
+    strut_coords[2],
+    strut_coords[5]
+];
+
+baseplate_coords_thumb = [
+    strut_coords[2],
+    strut_coords[3],
+    strut_coords[4],
+    strut_coords[5]
+];
+
 // hull of contact points between the stand and floor plane
 module baseplate_projection(slice_z) {
     union() {
         hull() {
             // project main body
             projection(cut = true)
-                translate([0, 0, -slice_z])
-                    keyboard_stand(4, 0);
+                translate([0, 0, -slice_z]) {
+                    support_step(baseplate_coords_main);
+                    support_joint(baseplate_coords_main);
+                }
             
             // fix for top left corner projection differing by slice_z
             translate([
@@ -27,7 +42,9 @@ module baseplate_projection(slice_z) {
         hull()
             // project thumb plate
             projection(cut = true)
-                translate([0, 0, -slice_z])
-                    keyboard_stand(0, 4);
+                translate([0, 0, -slice_z]) {
+                    support_step(baseplate_coords_thumb);
+                    support_joint(baseplate_coords_thumb);
+                }
     }
 }

@@ -25,10 +25,10 @@ function apply_step_rotation(point)
     = rotate(-stand_step_angle, [0, 1, 0]) * point;
 
 // one step in the arc of supports
-module support_step() {
-    last_step = len(strut_coords) - 1;
+module support_step(points = strut_coords) {
+    last_step = len(points) - 1;
     for (i = [0:last_step]) {
-        thisPoint = concat(strut_coords[i], [0]);
+        thisPoint = concat(points[i], [0]);
 
         // vertical strut at these coords
         support_strut(
@@ -39,7 +39,7 @@ module support_step() {
 
         // cross brace to the next set of coords
         if (i != last_step) {
-            nextPoint = concat(strut_coords[i + 1], [0]);
+            nextPoint = concat(points[i + 1], [0]);
         
             support_strut(
                 thisPoint,
@@ -57,12 +57,12 @@ module support_step() {
 }
 
 // fill gaps between angled cylinders
-module support_joint() {
-    last_step = len(strut_coords) - 1;
+module support_joint(points = strut_coords) {
+    last_step = len(points) - 1;
     for (i = [0:last_step]) {
-        thisPoint = concat(strut_coords[i], [0]);
+        thisPoint = concat(points[i], [0]);
         
-        // 
+        // add a sphere in the midpoint between each strut
         translate(thisPoint)
             rotate([0, -stand_step_angle / 2, 0])
                 sphere(strut_half, $fn=render_fragments);
