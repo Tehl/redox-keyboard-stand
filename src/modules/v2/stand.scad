@@ -71,23 +71,38 @@ module support_joint() {
 
 // tented stand with support struts
 module keyboard_stand(show_keyboard_volume = false) {
-    rotate([0, -stand_angle, 0]) {
-        keyboard_plate(true, true);
+    difference() {
+        union() {
+            // keyboard plate
+            rotate([0, -stand_angle, 0]) {
+                keyboard_plate(true, true);
 
-        if (show_keyboard_volume) {
-            keyboard_volume();
-        }
-    }
+                if (show_keyboard_volume) {
+                    keyboard_volume();
+                }
+            }
 
-    for (i = [0:stand_steps - 1]) {
-        rotate([0, -stand_step_angle * i, 0]) {
-            support_step();
-        }
-    }
+            // support struts
+            for (i = [0:stand_steps - 1]) {
+                rotate([0, -stand_step_angle * i, 0]) {
+                    support_step();
+                }
+            }
 
-    for (i = [0:stand_steps]) {
-        rotate([0, -stand_step_angle * i, 0]) {
-            support_joint();
+            // joints for struts
+            for (i = [0:stand_steps]) {
+                rotate([0, -stand_step_angle * i, 0]) {
+                    support_joint();
+                }
+            }
         }
+
+        // clip struts to floor plane
+        translate([0, 0, -strut_size])
+            cube([
+                plate_total_width / cos(stand_angle),
+                plate_total_height,
+                strut_size
+            ]);
     }
 }
