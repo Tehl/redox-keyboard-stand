@@ -6,23 +6,16 @@ module keyboard_plate(body = true, thumb = true) {
         );
     
     difference() {
-        // padded dimensions for the outer wall, with minkowski corners
+        // padded dimensions for the outer wall, with rounded corners
         translate([
             offset_x,
             offset_y,
             0
         ])
-            minkowski() {
-                linear_extrude(plate_total_depth / 2)
+            linear_extrude(plate_total_depth)
+                offset(r = plate_wall_thickness, $fn = render_fragments)
                     keyboard_footprint(0, body, thumb);
-                
-                cylinder(
-                    h = plate_total_depth / 2,
-                    r1 = plate_wall_thickness,
-                    $fn = render_fragments
-                );
-            };
-
+    
         // inset actual Redox dimensions to hold the keyboard
         translate([
             offset_x,
@@ -30,7 +23,9 @@ module keyboard_plate(body = true, thumb = true) {
             plate_thickness
         ])
             linear_extrude(plate_total_depth)
-                keyboard_footprint(0, body, thumb);
+                // allow space to insert the keyboard
+                offset(r = plate_wall_offset, $fn = render_fragments)
+                    keyboard_footprint(0, body, thumb);
         
         // remove the center of the plate to save plastic;
         // just need to leave a shelf to support the edges of the keyboard
