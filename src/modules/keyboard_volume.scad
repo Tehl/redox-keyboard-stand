@@ -1,23 +1,49 @@
 // basic volumes of the actual keyboard, for sizing/visualisation
-module keyboard_volume() {
+module keyboard_volume(opacity = 0.3) {
     // keyboard body
     translate([
         plate_wall_thickness,
         plate_total_height - redox_total_height - plate_wall_thickness,
         plate_thickness
     ])
-    color("red", 0.3)
-        linear_extrude(15)
+    color("red", opacity)
+        linear_extrude(redox_volume_body_depth)
             keyboard_footprint(0, true, true);
 
     // switches/keycaps
     translate([
-            plate_wall_thickness,
-            plate_total_height - redox_total_height - plate_wall_thickness,
-            plate_thickness + 15
-        ])
-        color("teal", 0.3)
-            linear_extrude(18)
-                offset(-9)
-                    keyboard_footprint(0, true, true);
+        plate_wall_thickness,
+        plate_total_height - redox_total_height - plate_wall_thickness,
+        plate_thickness + redox_volume_body_depth
+    ])
+    color("teal", opacity)
+        linear_extrude(redox_volume_keycap_depth)
+            offset(-redox_volume_keycap_inset)
+                keyboard_footprint(0, true, true);
+
+    // TRRS jack
+    translate([
+        redox_main_width + plate_wall_thickness - redox_trrs_offset_x - redox_trrs_width / 2 - redox_volume_trrs_width / 2,
+        plate_total_height - plate_wall_thickness,
+        plate_thickness - (redox_volume_trrs_depth - redox_volume_body_depth) - 5
+    ])
+    color("green", opacity)
+        cube([
+            redox_volume_trrs_width,
+            redox_volume_trrs_height,
+            redox_volume_trrs_depth
+        ]);
+
+    // USB jack
+    translate([
+        redox_main_width + plate_wall_thickness - redox_usb_offset_x - redox_usb_width / 2 - redox_volume_usb_width / 2,
+        plate_total_height - plate_wall_thickness,
+        plate_thickness - (redox_volume_usb_depth - redox_volume_body_depth) - 5
+    ])
+    color("green", opacity)
+        cube([
+            redox_volume_usb_width,
+            redox_volume_usb_height,
+            redox_volume_usb_depth
+        ]);
 }
