@@ -24,3 +24,6 @@ thumb_plate_center_y = thumb_rotate_y(
 
 thumb_half_x = plate_thumb_width / 2;
 thumb_half_y = plate_thumb_height / 2;
+
+shield_thickness = 3;
+shield_depth_pad = 3;

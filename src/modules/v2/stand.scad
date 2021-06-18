@@ -75,7 +75,7 @@ module keyboard_stand(show_keyboard_volume = false) {
         union() {
             // keyboard plate
             rotate([0, -stand_angle, 0]) {
-                keyboard_plate(true, true);
+                keyboard_plate_with_shields(true, true);
 
                 if (show_keyboard_volume) {
                     keyboard_volume();

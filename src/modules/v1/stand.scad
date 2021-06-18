@@ -40,7 +40,7 @@ module keyboard_stand(body_struts = 2, thumbStruts = 4, show_keyboard_volume = f
     difference() {
         rotate([0, -stand_angle, 0]) {
             union() {
-                keyboard_plate(body_struts > 0, thumbStruts > 0);
+                keyboard_plate_with_shields(body_struts > 0, thumbStruts > 0);
 
                 if (show_keyboard_volume) {
                     keyboard_volume();

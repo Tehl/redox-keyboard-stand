@@ -25,7 +25,7 @@ module keyboard_volume(opacity = 0.3) {
     translate([
         redox_main_width + plate_wall_thickness - redox_trrs_offset_x - redox_trrs_width / 2 - redox_volume_trrs_width / 2,
         plate_total_height - plate_wall_thickness,
-        plate_thickness - (redox_volume_trrs_depth - redox_volume_body_depth) - 5
+        plate_thickness - (redox_volume_trrs_depth - redox_volume_body_depth) - redox_volume_trrs_drop
     ])
     color("green", opacity)
         cube([
@@ -38,7 +38,7 @@ module keyboard_volume(opacity = 0.3) {
     translate([
         redox_main_width + plate_wall_thickness - redox_usb_offset_x - redox_usb_width / 2 - redox_volume_usb_width / 2,
         plate_total_height - plate_wall_thickness,
-        plate_thickness - (redox_volume_usb_depth - redox_volume_body_depth) - 5
+        plate_thickness - (redox_volume_usb_depth - redox_volume_body_depth) - redox_volume_usb_drop
     ])
     color("green", opacity)
         cube([

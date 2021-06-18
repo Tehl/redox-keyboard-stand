@@ -11,5 +11,5 @@ include <modules/footprint.scad>;
 include <modules/plate.scad>;
 include <modules/keyboard_volume.scad>;
 
-keyboard_plate();
+keyboard_plate_with_shields();
 //keyboard_volume();
