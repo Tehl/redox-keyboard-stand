@@ -4,7 +4,7 @@ redox_main_height = 116;
 redox_thumb_width = 50;
 redox_thumb_height = 61;
 redox_thumb_contact_point = 102;
-redox_thumb_angle = -31.9467;
+redox_thumb_angle = -30.4131;
 
 redox_total_width = 176;
 redox_total_height = 140.5;
