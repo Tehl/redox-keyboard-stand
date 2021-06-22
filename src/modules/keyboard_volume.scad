@@ -8,7 +8,7 @@ module keyboard_volume(opacity = 0.3) {
     ])
     color("red", opacity)
         linear_extrude(redox_volume_body_depth)
-            keyboard_footprint(0, true, true);
+            keyboard_footprint(true, true);
 
     // switches/keycaps
     translate([
@@ -19,7 +19,7 @@ module keyboard_volume(opacity = 0.3) {
     color("teal", opacity)
         linear_extrude(redox_volume_keycap_depth)
             offset(-redox_volume_keycap_inset)
-                keyboard_footprint(0, true, true);
+                keyboard_footprint(true, true);
 
     // TRRS jack
     translate([
