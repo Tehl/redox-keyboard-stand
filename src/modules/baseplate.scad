@@ -10,7 +10,7 @@ module baseplate_rim() {
             
             translate([0, 0, thisStep]) {
                 linear_extrude(step)
-                    baseplate_projection(max(thisStep, 0.01));
+                    baseplate_outline(max(thisStep, 0.01));
             }
         }
         
@@ -19,7 +19,7 @@ module baseplate_rim() {
         translate([0, 0, -0.5])
             linear_extrude(baseplate_depth + 1)
                 offset(r = -strut_size - 1)
-                    baseplate_projection(baseplate_depth);
+                    baseplate_outline(baseplate_depth);
     }
 }
 
@@ -29,7 +29,7 @@ module baseplate_hex() {
         translate([0, 0, -0.5])
             linear_extrude(baseplate_depth + 1)
                 offset(r = -strut_size - 1)
-                    baseplate_projection(baseplate_depth);             
+                    baseplate_outline(baseplate_depth);             
 
         translate([-5,0,0])    
             hex_grid(baseplate_depth);

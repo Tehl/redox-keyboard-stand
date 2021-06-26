@@ -6,17 +6,19 @@ include <library/rotation.scad>;
 include <dimensions/redox.scad>;
 include <dimensions/plate.scad>;
 include <dimensions/stand.scad>;
+include <dimensions/struts.scad>;
 include <dimensions/utility.scad>;
 
+include <modules/outlines/keyboard.scad>;
+include <modules/outlines/baseplate.scad>;
+
+include <modules/volumes/keyboard.scad>;
+
 include <modules/hex.scad>;
-include <modules/footprint.scad>;
 include <modules/plate.scad>;
 include <modules/support.scad>;
-include <modules/baseplate_common.scad>;
-include <modules/keyboard_volume.scad>;
-
-include <modules/v2/stand.scad>;
-include <modules/v2/baseplate.scad>;
+include <modules/stand.scad>;
+include <modules/baseplate.scad>;
 
 module main() {
     difference() {
@@ -29,7 +31,7 @@ module main() {
         translate([0, 0, -0.01])
             linear_extrude(2)
                 offset(r = -4)
-                    baseplate_projection(baseplate_depth);
+                    baseplate_outline(baseplate_depth);
     }
 }
 

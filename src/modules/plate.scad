@@ -40,7 +40,7 @@ module keyboard_plate(body = true, thumb = true) {
         ])
             linear_extrude(plate_total_depth)
                 offset(r = plate_wall_thickness, $fn = render_fragments)
-                    keyboard_footprint(body, thumb);
+                    keyboard_outline(body, thumb);
     
         // inset actual Redox dimensions to hold the keyboard
         translate([
@@ -51,7 +51,7 @@ module keyboard_plate(body = true, thumb = true) {
             linear_extrude(plate_total_depth)
                 // allow space to insert the keyboard
                 offset(r = plate_wall_offset, $fn = render_fragments)
-                    keyboard_footprint(body, thumb);
+                    keyboard_outline(body, thumb);
         
         // remove the center of the plate to save plastic;
         // just need to leave a shelf to support the edges of the keyboard
@@ -62,7 +62,7 @@ module keyboard_plate(body = true, thumb = true) {
         ])
             linear_extrude(plate_total_depth)
                 offset(r = -plate_shelf_width)
-                    keyboard_footprint(body, thumb);
+                    keyboard_outline(body, thumb);
         
         // hole for LED strip
         translate([

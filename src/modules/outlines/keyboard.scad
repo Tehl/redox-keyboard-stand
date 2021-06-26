@@ -1,5 +1,5 @@
 // outline of the main redox body
-module keyboard_footprint_body() {
+module keyboard_outline_body() {
     translate([
         redox_main_width / 2,
         redox_main_height / 2
@@ -13,7 +13,7 @@ module keyboard_footprint_body() {
 }
 
 // outline of the redox thumb cluster
-module keyboard_footprint_thumb() {
+module keyboard_outline_thumb() {
     translate([
         redox_total_width - thumb_rotate_x(
             redox_thumb_width / 2,
@@ -33,14 +33,14 @@ module keyboard_footprint_thumb() {
 }
 
 // outline of the redox keyboard
-module keyboard_footprint(body = true, thumb = true) {
+module keyboard_outline(body = true, thumb = true) {
     union() {
         if (body) {
-            keyboard_footprint_body();
+            keyboard_outline_body();
         }            
        
         if (thumb) {
-            keyboard_footprint_thumb();
+            keyboard_outline_thumb();
         }            
     };
 }

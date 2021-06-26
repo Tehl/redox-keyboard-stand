@@ -12,7 +12,7 @@ baseplate_coords_thumb = [
 ];
 
 // hull of contact points between the stand and floor plane
-module baseplate_projection(slice_z) {
+module baseplate_outline(slice_z) {
     union() {
         hull() {
             // project main body
