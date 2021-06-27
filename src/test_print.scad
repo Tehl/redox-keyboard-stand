@@ -3,7 +3,6 @@ baseplate_fragments = 4;
 
 include <dimensions/redox.scad>;
 include <dimensions/plate.scad>;
-include <dimensions/utility.scad>;
 
 include <modules/outlines/keyboard.scad>;
 include <modules/volumes/keyboard.scad>;

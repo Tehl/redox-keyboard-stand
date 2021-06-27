@@ -31,7 +31,7 @@ module baseplate_hex() {
                 offset(r = -strut_size - 1)
                     baseplate_outline(baseplate_depth);             
 
-        translate([-5,0,0])    
+        translate([-5,4,0])    
             hex_grid(baseplate_depth);
     }
 }

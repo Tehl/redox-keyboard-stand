@@ -79,10 +79,10 @@ module keyboard_stand(show_keyboard_volume = false) {
         }
 
         // clip struts to floor plane
-        translate([0, 0, -strut_size])
+        translate([0, -100, -strut_size])
             cube([
-                plate_total_width / cos(stand_angle),
-                plate_total_height,
+                plate_main_width + 100,
+                plate_main_height + 100,
                 strut_size
             ]);
     }

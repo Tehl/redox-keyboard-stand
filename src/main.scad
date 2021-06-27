@@ -7,7 +7,6 @@ include <dimensions/redox.scad>;
 include <dimensions/plate.scad>;
 include <dimensions/stand.scad>;
 include <dimensions/struts.scad>;
-include <dimensions/utility.scad>;
 
 include <modules/outlines/keyboard.scad>;
 include <modules/outlines/baseplate.scad>;

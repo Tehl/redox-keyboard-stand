@@ -3,7 +3,7 @@ module keyboard_volume(opacity = 0.3) {
     // keyboard body
     translate([
         plate_wall_thickness,
-        plate_total_height - redox_total_height - plate_wall_thickness,
+        plate_main_height - redox_main_height - plate_wall_thickness,
         plate_thickness
     ])
     color("red", opacity)
@@ -13,7 +13,7 @@ module keyboard_volume(opacity = 0.3) {
     // switches/keycaps
     translate([
         plate_wall_thickness,
-        plate_total_height - redox_total_height - plate_wall_thickness,
+        plate_main_height - redox_main_height - plate_wall_thickness,
         plate_thickness + redox_volume_body_depth
     ])
     color("teal", opacity)
@@ -24,7 +24,7 @@ module keyboard_volume(opacity = 0.3) {
     // TRRS jack
     translate([
         redox_main_width + plate_wall_thickness - redox_trrs_offset_x - redox_trrs_width / 2 - redox_volume_trrs_width / 2,
-        plate_total_height - plate_wall_thickness,
+        plate_main_height - plate_wall_thickness,
         plate_thickness - (redox_volume_trrs_depth - redox_volume_body_depth) - redox_volume_trrs_drop
     ])
     color("green", opacity)
@@ -37,7 +37,7 @@ module keyboard_volume(opacity = 0.3) {
     // USB jack
     translate([
         redox_main_width + plate_wall_thickness - redox_usb_offset_x - redox_usb_width / 2 - redox_volume_usb_width / 2,
-        plate_total_height - plate_wall_thickness,
+        plate_main_height - plate_wall_thickness,
         plate_thickness - (redox_volume_usb_depth - redox_volume_body_depth) - redox_volume_usb_drop
     ])
     color("green", opacity)

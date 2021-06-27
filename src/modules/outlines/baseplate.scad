@@ -25,7 +25,7 @@ module baseplate_outline(slice_z) {
             // fix for top left corner projection differing by slice_z
             translate([
                 plate_wall_thickness / 2,
-                plate_total_height - plate_wall_thickness,
+                plate_main_height - plate_wall_thickness,
                 0
             ])
                 circle(plate_wall_thickness, $fn = render_fragments);
@@ -33,7 +33,7 @@ module baseplate_outline(slice_z) {
             // fix for bottom left corner projection differing by slice_z
             translate([
                 plate_wall_thickness / 2,
-                plate_total_height - plate_main_height + plate_wall_thickness,
+                plate_wall_thickness,
                 0
             ])
                 circle(plate_wall_thickness, $fn = render_fragments);

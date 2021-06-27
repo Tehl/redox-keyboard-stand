@@ -27,9 +27,7 @@ module shield_plate(width, height, depth, gap, thickness) {
 // walled plate to hold the redox keyboard body
 module keyboard_plate(body = true, thumb = true) {
     offset_x = plate_wall_thickness;
-    offset_y = plate_wall_thickness * (
-            1 + (sin(redox_thumb_angle) + cos(redox_thumb_angle))
-        );
+    offset_y = plate_wall_thickness;
     
     difference() {
         // padded dimensions for the outer wall, with rounded corners
@@ -61,25 +59,13 @@ module keyboard_plate(body = true, thumb = true) {
             -0.5
         ])
             linear_extrude(plate_total_depth)
-                offset(r = -plate_shelf_width)
+                offset(r = -plate_shelf_width, $fn = render_fragments)
                     keyboard_outline(body, thumb);
-        
-        // hole for LED strip
-        translate([
-            redox_lightstrip_offset_x,
-            plate_total_height - redox_lightstrip_height - redox_lightstrip_offset_y,
-            -1
-        ])
-            linear_extrude(plate_total_depth)
-                square([
-                    redox_lightstrip_width,
-                    redox_lightstrip_height
-                ], false);
-        
+               
         // hole for TRRS cable
         translate([
             redox_main_width + plate_wall_thickness - redox_trrs_offset_x - redox_trrs_width,
-            plate_total_height - plate_wall_thickness - 0.12,
+            plate_main_height - plate_wall_thickness,
             -0.5
         ])
             cube([
@@ -91,7 +77,7 @@ module keyboard_plate(body = true, thumb = true) {
         // hole for USB cable
         translate([
             redox_main_width + plate_wall_thickness - redox_usb_offset_x - redox_usb_width,
-            plate_total_height - plate_wall_thickness - 0.1,
+            plate_main_height - plate_wall_thickness,
             -0.5
         ])
             cube([
@@ -110,7 +96,7 @@ module keyboard_plate_with_shields(body = true, thumb = true) {
         // shield for TRRS cable
         translate([
             redox_main_width + plate_wall_thickness - redox_trrs_offset_x - redox_trrs_width - shield_thickness,
-            plate_total_height - plate_wall_thickness + plate_wall_offset,
+            plate_main_height - plate_wall_thickness + plate_wall_offset,
             plate_thickness - (redox_volume_trrs_depth - redox_volume_body_depth) - redox_volume_trrs_drop - shield_depth_pad
         ])
             shield_plate(
@@ -124,7 +110,7 @@ module keyboard_plate_with_shields(body = true, thumb = true) {
         // shield for USB cable
         translate([
             redox_main_width + plate_wall_thickness - redox_usb_offset_x - redox_usb_width - shield_thickness,
-            plate_total_height - plate_wall_thickness + plate_wall_offset,
+            plate_main_height - plate_wall_thickness + plate_wall_offset,
             plate_thickness - (redox_volume_usb_depth - redox_volume_body_depth) - redox_volume_usb_drop - shield_depth_pad
         ])
             shield_plate(
