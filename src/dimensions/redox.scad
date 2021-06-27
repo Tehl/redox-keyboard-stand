@@ -21,11 +21,11 @@ redox_volume_keycap_depth = 18;
 redox_volume_keycap_inset = 9;
 
 redox_volume_trrs_width = 10;
-redox_volume_trrs_height = 10;
+redox_volume_trrs_height = 15;
 redox_volume_trrs_depth = 20;
 redox_volume_trrs_drop = 5;
 
 redox_volume_usb_width = 10;
-redox_volume_usb_height = 10;
+redox_volume_usb_height = 15;
 redox_volume_usb_depth = 20;
 redox_volume_usb_drop = 5;
