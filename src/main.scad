@@ -1,5 +1,5 @@
-render_fragments = 16;
-baseplate_fragments = 4;
+render_fragments = 32;
+baseplate_fragments = 8;
 
 include <library/rotation.scad>;
 
@@ -27,9 +27,9 @@ module main() {
         }
 
         // recess the baseplate to add a neoprene layer for grip
-        translate([0, 0, -0.01])
-            linear_extrude(2)
-                offset(r = -4)
+        translate([0, 0, -baseplate_grip_offset])
+            linear_extrude(baseplate_grip_thickness)
+                offset(r = -baseplate_grip_wall)
                     baseplate_outline(baseplate_depth);
     }
 }

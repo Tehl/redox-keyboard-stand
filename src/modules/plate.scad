@@ -65,24 +65,24 @@ module keyboard_plate(body = true, thumb = true) {
         // hole for TRRS cable
         translate([
             redox_main_width + plate_wall_thickness - redox_trrs_offset_x - redox_trrs_width,
-            plate_main_height - plate_wall_thickness,
+            plate_main_height - plate_wall_thickness - plate_trrs_inset,
             -0.5
         ])
             cube([
                 redox_trrs_width,
-                plate_wall_thickness + 1,
+                plate_wall_thickness + plate_trrs_inset + 1,
                 plate_total_depth + 1
             ]);
             
         // hole for USB cable
         translate([
             redox_main_width + plate_wall_thickness - redox_usb_offset_x - redox_usb_width,
-            plate_main_height - plate_wall_thickness,
+            plate_main_height - plate_wall_thickness - plate_usb_inset,
             -0.5
         ])
             cube([
                 redox_usb_width,
-                plate_wall_thickness + 1,
+                plate_wall_thickness + plate_usb_inset + 1,
                 plate_total_depth + 1
             ]);
     }
