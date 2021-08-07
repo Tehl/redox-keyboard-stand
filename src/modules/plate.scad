@@ -24,6 +24,22 @@ module shield_plate(width, height, depth, gap, thickness) {
             }
 }
 
+// actual Redox dimensions used to inset space to hold the keyboard
+module keyboard_inset_for_plate(body, thumb) {
+    offset_x = plate_wall_thickness;
+    offset_y = plate_wall_thickness;
+
+    translate([
+            offset_x,
+            offset_y,
+            plate_thickness
+        ])
+        linear_extrude(plate_total_depth)
+            // allow space to insert the keyboard
+            offset(r = plate_wall_offset, $fn = render_fragments)
+                keyboard_outline(body, thumb);
+}
+
 // walled plate to hold the redox keyboard body
 module keyboard_plate(body = true, thumb = true) {
     offset_x = plate_wall_thickness;
@@ -41,15 +57,7 @@ module keyboard_plate(body = true, thumb = true) {
                     keyboard_outline(body, thumb);
     
         // inset actual Redox dimensions to hold the keyboard
-        translate([
-            offset_x,
-            offset_y,
-            plate_thickness
-        ])
-            linear_extrude(plate_total_depth)
-                // allow space to insert the keyboard
-                offset(r = plate_wall_offset, $fn = render_fragments)
-                    keyboard_outline(body, thumb);
+        keyboard_inset_for_plate(body, thumb);
         
         // remove the center of the plate to save plastic;
         // just need to leave a shelf to support the edges of the keyboard

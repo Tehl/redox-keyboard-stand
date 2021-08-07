@@ -26,6 +26,11 @@ module main() {
             baseplate();
         }
 
+        // remove any additional material which clips into the space
+        // that holds the keyboard
+        rotate([0, -stand_angle, 0])
+            keyboard_inset_for_plate(true, true);
+
         // recess the baseplate to add a neoprene layer for grip
         translate([0, 0, -baseplate_grip_offset])
             linear_extrude(baseplate_grip_thickness)
